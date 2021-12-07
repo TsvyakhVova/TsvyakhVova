@@ -8,13 +8,20 @@ body {
 .wrapper {
 	position: absolute;
 }
-.trangle {
+
+#rectangle {
+	width: 200px;
+	height: 100px;
+	background: red;
+}
+
+/*.trangle {
 	width: 0;
 	height: 0;
 	border: solid 150px;
 	border-color: transparent transparent red transparent;
 	margin: 10px;
-}
+}*/
 .circle {
 	width: 300px;
 	height: 300px;
