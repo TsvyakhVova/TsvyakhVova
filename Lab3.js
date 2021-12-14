@@ -48,11 +48,13 @@ scene.add(moon)
 scene.add(mars)
 let timer = 0
 var t = 0
+var T = 0
 camera.position.z = 5
 function animate() {
 	requestAnimationFrame(animate)
 	renderer.render(scene, camera)
 	t += 0.01
+	T += 0.075
 	sun.rotation.y += 0.0006
 	earth.rotation.y += 0.001
 	moon.rotation.y += 0.05
@@ -61,7 +63,7 @@ function animate() {
 	earth.position.x = 2.5 * Math.cos(t)
 	moon.position.x = 2.9 * Math.cos(t)
 	moon.position.z = 2.9 * Math.sin(t)
-	mars.position.z = 2.5 * Math.cos(t)
-	mars.position.y = 2.5 * Math.sin(t)
+	mars.position.z = 2.5 * Math.cos(T)
+	mars.position.y = 2.5 * Math.sin(T)
 }
 animate()
