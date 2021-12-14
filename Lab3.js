@@ -20,7 +20,7 @@ let material_moon = new THREE.MeshBasicMaterial({
 	map: new THREE.TextureLoader().load("three.jpg"),
 })
 let material_black = new THREE.MeshBasicMaterial({
-	map: new THREE.TextureLoader().load("sky.jpg"),
+	map: new THREE.TextureLoader().load("Sky.jpg"),
 })
 let material_mars = new THREE.MeshBasicMaterial({
 	map: new THREE.TextureLoader().load("foure.jpg"),
