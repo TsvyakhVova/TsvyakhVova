@@ -59,6 +59,7 @@ function animate() {
 	earth.rotation.y += 0.001
 	moon.rotation.y += 0.05
 	mars.rotation.x += 0.05
+	black.rotation.z += 0.0002
 	earth.position.z = 2.5 * Math.sin(t)
 	earth.position.x = 2.5 * Math.cos(t)
 	moon.position.x = 2.9 * Math.cos(t)
