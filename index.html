@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurs Work</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="./three.js"></script>
+  <script src="./OrbitControls.js"></script>
+  <script type="module" src="./GLTFLoader.js"></script>
+  <script type="module">
+    import { GLTFLoader } from "./GLTFLoader.js";
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      1,
+      1000
+    )
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    let controls = new THREE.OrbitControls(camera, renderer.domElement)
+    let pointlight = new THREE.PointLight(0xff0000, 1)
+    pointlight.position.set(0, 0, 0)
+    scene.add(pointlight)
+    var loader = new GLTFLoader();
+    var loader1 = new GLTFLoader();
+    var loader2 = new GLTFLoader();
+    var loader3 = new GLTFLoader();
+    var loader4 = new GLTFLoader();
+
+    var obj;
+    var obj1;
+    var obj2;
+    var obj3;
+    var obj4;
+
+    loader4.load("./chair/Untitled.glb", function (glb){
+      obj4 = glb.scene
+      obj4.scale.set(0.5,0.5,0.5);
+      obj4.position.x -= 25.0;
+      obj4.position.y -= 30.0;
+      obj4.position.z += 15.0;
+      scene.add(glb.scene);
+    }); 
+
+    loader3.load("./cup/burger.glb", function (glb) {
+      obj2 = glb.scene
+      obj2.scale.set(2,2,2);
+      obj2.position.x += 5.0;
+      obj2.position.y += 1.0;
+      obj2.position.z += 15.0;
+      scene.add(glb.scene);
+    });
+    loader2.load("./hat/hat.glb", function (glb) {
+      obj3 = glb.scene
+      obj3.scale.set(25,25,25);
+      obj3.position.x += 15.0;
+      obj3.position.y += 0.9;
+      obj3.position.z += 25.0;
+      scene.add(glb.scene);
+    });
+    loader1.load("./fruit/scene.gltf", function (gltf) {
+      obj1 = gltf.scene
+      obj1.position.y += 3.4;
+      obj1.position.x += 10;
+      obj1.scale.x = 0.01;
+      obj1.scale.y = 0.01;
+      obj1.scale.z = 0.01;
+      scene.add(gltf.scene);
+    });
+    loader.load("./table/scene.gltf", function (gltf) {
+      obj = gltf.scene
+      obj.position.y -= 27;
+      obj.position.x += 20;
+      scene.add(gltf.scene);
+    });
+    scene.background = new THREE.Color(0xffffff)
+    var light = new THREE.HemisphereLight(0xffffff, 0x000000, 2);
+    scene.add(light);
+    camera.position.set(10, 50, 100);
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update()
+      renderer.render(scene, camera);
+    }
+    animate();
+
+  </script>
+</body>
+
+</html>
